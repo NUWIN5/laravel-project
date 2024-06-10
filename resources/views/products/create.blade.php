@@ -8,5 +8,11 @@
 </head>
 <body>
     <h1>Create a Product</h1>
+    <form method="post" action>
+        <div>
+            <label>Name</label>
+            <input type="name" name="name" placeholder="Product Name">
+        </div>
+    </form>
 </body>
 </html>
