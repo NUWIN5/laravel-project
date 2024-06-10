@@ -8,7 +8,17 @@
 </head>
 <body>
     <h1>Product</h1>
-    <div>Index</div>
+    <div>
+        <table border="1">
+            <tr>
+                <th>Product Id</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                
+            </tr>
+        </table>
+    </div>
     
 </body>
 </html>
