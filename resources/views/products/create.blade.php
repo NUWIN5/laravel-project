@@ -11,8 +11,18 @@
     <form method="post" action>
         <div>
             <label>Name</label>
-            <input type="name" name="name" placeholder="Product Name">
+            <input type="text" name="name" placeholder="Product Name">
         </div>
+        <div>
+            <label>Quantity</label>
+            <input type="text" name="qty" placeholder="Product Quantity">
+        </div>
+        <div>
+            <label>Price</label>
+            <input type="text" name="price" placeholder="Product Price">
+        </div>
+        <div>
+            <input type="submit" value="Create a New Product"/>
     </form>
 </body>
 </html>
