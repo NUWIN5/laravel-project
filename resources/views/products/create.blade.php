@@ -8,7 +8,9 @@
 </head>
 <body>
     <h1>Create a Product</h1>
-    <form method="post" action>
+    <form method="post" action="{{route('product.store')}}">
+        @csrf
+        @method('post')
         <div>
             <label>Name</label>
             <input type="text" name="name" placeholder="Product Name">
@@ -22,7 +24,7 @@
             <input type="text" name="price" placeholder="Product Price">
         </div>
         <div>
-            <input type="submit" value="Create a New Product"/>
+            <input type="submit" value="Create a New Product">
     </form>
 </body>
 </html>
