@@ -11,20 +11,25 @@
     <form method="post" action="{{route('product.store')}}">
         @csrf
         @method('post')
+
+        <div>
+            <label>id</label>
+            <input type="number" name="id" placeholder="Product ID">
+        </div>
         <div>
             <label>Name</label>
             <input type="text" name="name" placeholder="Product Name">
         </div>
         <div>
             <label>Quantity</label>
-            <input type="text" name="qty" placeholder="Product Quantity">
+            <input type="number" name="quantity" placeholder="Product Quantity">
         </div>
         <div>
             <label>Price</label>
-            <input type="text" name="price" placeholder="Product Price">
+            <input type="number" name="price" placeholder="Product Price">
         </div>
         <div>
-            <input type="submit" value="Create a New Product">
+        <button type="submit">Add Product</button>
     </form>
 </body>
 </html>
