@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Create a Product</title>
     <style>
         body {
@@ -40,7 +39,7 @@
             margin-bottom: 5px;
             font-weight: bold;
         }
-        .form-group input {
+        .form-group input, .form-group select {
             width: calc(100% - 22px);
             padding: 10px;
             font-size: 16px;
@@ -48,7 +47,7 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-        .form-group input:focus {
+        .form-group input:focus, .form-group select:focus {
             border-color: #66afe9;
             outline: none;
         }
@@ -79,9 +78,8 @@
                 </ul>
             @endif
         </div>
-        <form method="post" action="{{route('product.store')}}">
+        <form method="post" action="{{route('products.store')}}">
             @csrf
-            @method('post')
             <div class="form-group">
                 <label>Product Id</label>
                 <input type="number" name="id" placeholder="ID">
@@ -96,7 +94,11 @@
             </div>
             <div class="form-group">
                 <label>Price</label>
-                <input type="number" name="price" placeholder="Product Price">
+                <input type="number" name="price" step="0.01" placeholder="Product Price">
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" name="product_category_name" placeholder="Category Name">
             </div>
             <div class="form-group">
                 <button type="submit">Add Product</button>
