@@ -13,8 +13,10 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = ProductCategory::all();
+        return view('product_categories.index', compact('categories'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +25,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('product_categories.create');
     }
 
     /**
@@ -34,7 +36,9 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(['name' => 'required|string|max:255']);
+        ProductCategory::create($request->all());
+        return redirect()->route('product-categories.index')->with('success', 'Category created successfully.');
     }
 
     /**
@@ -43,9 +47,9 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ProductCategory $productCategory)
     {
-        //
+        return view('product_categories.show', compact('productCategory'));
     }
 
     /**
@@ -54,9 +58,9 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ProductCategory $productCategory)
     {
-        //
+        return view('product_categories.edit', compact('productCategory'));
     }
 
     /**
@@ -66,9 +70,11 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, ProductCategory $productCategory)
     {
-        //
+        $request->validate(['name' => 'required|string|max:255']);
+        $productCategory->update($request->all());
+        return redirect()->route('product-categories.index')->with('success', 'Category updated successfully.');
     }
 
     /**
@@ -77,8 +83,9 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductCategory $productCategory)
     {
-        //
+        $productCategory->delete();
+        return redirect()->route('product-categories.index')->with('success', 'Category deleted successfully.');
     }
 }
