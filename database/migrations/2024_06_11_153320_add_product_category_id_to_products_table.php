@@ -13,24 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
-        });
-
         Schema::table('products', function (Blueprint $table) {
-            $table->foreignId('product_category_id')->constrained('product_categories');
+            $table->unsignedBigInteger('product_category_id')->nullable();
+            $table->foreign('product_category_id')->references('id')->on('product_categories')->onDelete('cascade');
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
             $table->dropForeign(['product_category_id']);
             $table->dropColumn('product_category_id');
         });
-
-        Schema::dropIfExists('product_categories');
     }
 };

@@ -72,6 +72,7 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, ProductCategory $productCategory)
     {
+        
         $request->validate(['name' => 'required|string|max:255']);
         $productCategory->update($request->all());
         return redirect()->route('product-categories.index')->with('success', 'Category updated successfully.');

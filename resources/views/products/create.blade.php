@@ -68,37 +68,46 @@
 </head>
 <body>
     <div class="container">
-        <h1>Create a Product</h1>
-        <div>
-            @if($errors->any())
-                <ul class="error-list">
+        <h1>Create Product</h1>
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
                     @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
+                        <li>{{ $error }}</li>
                     @endforeach
                 </ul>
-            @endif
-        </div>
-        <form method="post" action="{{route('products.store')}}">
+            </div>
+        @endif
+        <form method="post" action="{{ route('products.store') }}">
             @csrf
             <div class="form-group">
                 <label>Product Id</label>
-                <input type="number" name="id" placeholder="ID">
+                <input type="number" name="id" value="{{ old('id') }}" placeholder="ID">
             </div>
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" placeholder="Product Name">
+                <input type="text" name="name" value="{{ old('name') }}" placeholder="Product Name">
             </div>
             <div class="form-group">
                 <label>Quantity</label>
-                <input type="number" name="quantity" placeholder="Product Quantity">
+                <input type="number" name="quantity" value="{{ old('quantity') }}" placeholder="Product Quantity">
             </div>
             <div class="form-group">
                 <label>Price</label>
-                <input type="number" name="price" step="0.01" placeholder="Product Price">
+                <input type="number" name="price" step="0.01" value="{{ old('price') }}" placeholder="Product Price">
             </div>
             <div class="form-group">
-                <label>Category</label>
-                <input type="text" name="product_category_name" placeholder="Category Name">
+                <label>Category Name (New)</label>
+                <input type="text" name="product_category_name" value="{{ old('product_category_name') }}" placeholder="Category Name">
+            </div>
+            <div class="form-group">
+                <label>Category (Existing)</label>
+                <select name="product_category_id">
+                    <option value="">Select a Category</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
                 <button type="submit">Add Product</button>

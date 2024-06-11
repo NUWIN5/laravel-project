@@ -30,8 +30,8 @@ Route::put('/product/{product}/update}', [ProductController::class, 'update'])->
 Route::delete('/product/{product}/delete}', [ProductController::class, 'delete'])->name('product.delete');
 
 
+Route::resource('products', ProductController::class);
 Route::resource('product-categories', ProductCategoryController::class);
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
