@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit a Product</title>
+    <title>Edit Product</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,7 +39,7 @@
             margin-bottom: 5px;
             font-weight: bold;
         }
-        .form-group input {
+        .form-group input, .form-group select {
             width: calc(100% - 22px);
             padding: 10px;
             font-size: 16px;
@@ -48,7 +47,7 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
-        .form-group input:focus {
+        .form-group input:focus, .form-group select:focus {
             border-color: #66afe9;
             outline: none;
         }
@@ -56,20 +55,20 @@
             width: 100%;
             padding: 10px;
             font-size: 16px;
-            background-color: #007bff;
+            background-color: #28a745;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
         .form-group button:hover {
-            background-color: #0056b3;
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Edit a Product</h1>
+        <h1>Edit Product</h1>
         <div>
             @if($errors->any())
                 <ul class="error-list">
@@ -79,24 +78,28 @@
                 </ul>
             @endif
         </div>
-        <form method="post" action="{{ route('product.update', ['product' => $product->id]) }}">
+        <form method="post" action="{{ route('products.update', $product->id) }}">
             @csrf
-            @method('put')
+            @method('PUT')
             <div class="form-group">
                 <label>Product Id</label>
-                <input type="number" name="id" placeholder="ID" value="{{$product->id}}"/>
+                <input type="number" name="id" value="{{ $product->id }}" placeholder="ID">
             </div>
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" name="name" placeholder="Product Name" value="{{$product->name}}"/>
+                <input type="text" name="name" value="{{ $product->name }}" placeholder="Product Name">
             </div>
             <div class="form-group">
                 <label>Quantity</label>
-                <input type="number" name="quantity" placeholder="Product Quantity" value="{{$product->quantity}}"/>
+                <input type="number" name="quantity" value="{{ $product->quantity }}" placeholder="Product Quantity">
             </div>
             <div class="form-group">
                 <label>Price</label>
-                <input type="number" name="price" placeholder="Product Price" value="{{$product->price}}"/>
+                <input type="number" name="price" step="0.01" value="{{ $product->price }}" placeholder="Product Price">
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" name="product_category_name" value="{{ $product->category->name }}" placeholder="Category Name">
             </div>
             <div class="form-group">
                 <button type="submit">Update Product</button>
