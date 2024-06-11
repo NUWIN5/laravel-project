@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,12 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign(['product_category_id']);
+            $table->dropColumn('product_category_id');
+        });
+
         Schema::dropIfExists('product_categories');
+    
     }
 };
