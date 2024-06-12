@@ -108,7 +108,7 @@
             @endif
         </div>
         <div>
-            <a href="{{route('product.create')}}" class="add-product">Add a Product</a>
+            <a href="{{ route('product.create') }}" class="add-product">Add a Product</a>
         </div>
         <div>
             <table>
@@ -118,6 +118,7 @@
                         <th>Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
+                        <th>Category</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -129,6 +130,7 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->price }}</td>
+                        <td>{{ $product->category->name ?? 'N/A' }}</td> <!-- Show category name -->
                         <td>
                             <a href="{{ route('product.edit', ['product'=> $product]) }}" class="btn btn-edit">Edit</a>
                         </td>
