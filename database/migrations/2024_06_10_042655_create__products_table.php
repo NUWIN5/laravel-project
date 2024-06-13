@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('quantity');
             $table->decimal('price');
+            $table->foreignId('product_category_id')->constrained('product_categories');
             $table->timestamps();
         });
     }
