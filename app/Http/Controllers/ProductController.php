@@ -88,4 +88,11 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
+
+    public function showByCategory($categoryId)
+    {
+        $category = ProductCategory::findOrFail($categoryId);
+        $products = $category->products; // Using the relationship defined in the models
+        return view('products.by_category', compact('category', 'products'));
+    }
 }
