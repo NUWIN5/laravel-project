@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ProductCategory;
 
 class ProductCategoryController extends Controller
 {
@@ -47,9 +48,10 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductCategory $productCategory)
+    public function show($id)
     {
-        return view('product_categories.show', compact('productCategory'));
+        $category = ProductCategory::with('products')->findOrFail($id);
+        return view('product_categories.show', compact('category'));
     }
 
     /**
