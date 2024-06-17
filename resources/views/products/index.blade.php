@@ -131,7 +131,7 @@
         }
 
         a.category-link {
-            color: orange;
+            color: darkorange;
             font-weight: bold;
             text-decoration: none; /* Removes the underline */
             transition: color 0.3s; /* Adds a transition for the hover effect */
