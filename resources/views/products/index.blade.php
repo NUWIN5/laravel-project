@@ -129,6 +129,17 @@
         .btn-delete:hover {
             background-color: #c82333;
         }
+
+        a.category-link {
+            color: orange;
+            font-weight: bold;
+            text-decoration: none; /* Removes the underline */
+            transition: color 0.3s; /* Adds a transition for the hover effect */
+        }
+
+        a.category-link:hover {
+            color: #0056b3; /* Changes color on hover */
+        }
     </style>
 </head>
 <body>
@@ -165,7 +176,7 @@
                         <td>{{ $product->quantity }}</td>
                         <td>{{ $product->price }}</td>
                         <td>
-                            <a href="{{ route('categories.show', ['id' => $product->product_category_id]) }}">
+                            <a href="{{ route('categories.show', ['id' => $product->product_category_id]) }}" class="category-link">
                                 {{ $product->category->name }}
                             </a>
                         </td>
