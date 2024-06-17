@@ -1,5 +1,5 @@
 <x-guest-layout>
-<form method="POST" action="{{ route('register') }}" class="bg-yellow">
+<form method="POST" action="{{ route('register') }}">
     @csrf
     <!-- Your form inputs go here -->
 </form>
