@@ -77,12 +77,10 @@
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <h1>Products in Category: {{ $category->name }}</h1>
-        <div class="center">
-            <a href="{{ route('product.create') }}" class="btn">Add New Product</a>
-        </div>
-        <table>
+        <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Add New Product</a>
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -92,13 +90,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($category->products as $product)
-                <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ $product->quantity }}</td>
-                    <td>{{ $product->price }}</td>
-                </tr>
+                @foreach ($products as $product)
+                    <tr>
+                        <td>{{ $product->id }}</td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->quantity }}</td>
+                        <td>{{ $product->price }}</td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>

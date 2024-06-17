@@ -54,7 +54,7 @@ class ProductCategoryController extends Controller
         $category = ProductCategory::findOrFail($id);
         $products = $category->products; // Get the products associated with the category
 
-        return view('categories.show', compact('category', 'products'));
+        return view('product_categories.show', compact('category', 'products'));
     }
 
     /**
