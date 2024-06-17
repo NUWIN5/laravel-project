@@ -124,30 +124,30 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($products as $product)
-            <tr>
-                <td>{{ $product->id }}</td>
-                <td>{{ $product->name }}</td>
-                <td>{{ $product->quantity }}</td>
-                <td>{{ $product->price }}</td>
-                <td>
-                    <a href="{{ route('categories.show', ['id' => $product->category_id]) }}">
-                        {{ $product->category->name }}
-                    </a>
-                </td>
-                <td>
-                    <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">Edit</a>
-                </td>
-                <td>
-                    <form action="{{ route('product.delete', $product->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
+    @foreach ($products as $product)
+        <tr>
+            <td>{{ $product->id }}</td>
+            <td>{{ $product->name }}</td>
+            <td>{{ $product->quantity }}</td>
+            <td>{{ $product->price }}</td>
+            <td>
+                <a href="{{ route('categories.show', ['id' => $product->product_category_id]) }}">
+                    {{ $product->category->name }}
+                </a>
+            </td>
+            <td>
+                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">Edit</a>
+            </td>
+            <td>
+                <form action="{{ route('product.delete', $product->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
 </table>
         </div>
     </div>

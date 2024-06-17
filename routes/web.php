@@ -31,6 +31,7 @@ Route::delete('/product/{product}/delete}', [ProductController::class, 'delete']
 Route::get('/products/c/{id}', [ProductCategoryController::class, 'show'])->name('categories.show');
 
 
+
 Route::resource('products', ProductController::class);
 Route::resource('product-categories', ProductCategoryController::class);
 
